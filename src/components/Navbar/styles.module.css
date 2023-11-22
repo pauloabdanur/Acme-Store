@@ -1,0 +1,49 @@
+.navbar {
+  display: flex;
+  padding: 16px;
+  box-shadow: 0 1px 3px -2px #000;
+}
+
+.navLogo img {
+  width: 200px;
+  height: 60px;
+}
+
+.navLoginCart {
+  margin-left: auto;
+  margin-right: 40px;
+  display: flex;
+  align-items: center;
+  gap: 45px;
+}
+
+.navLoginCart button {
+  width: 157px;
+  height: 58px;
+  outline: none;
+  border: 1px solid #7a7a7a;
+  border-radius: 75px;
+  color: #515151;
+  font-size: 20px;
+  font-weight: 500;
+  background: #fff;
+  cursor: pointer;
+}
+
+.navLoginCart button:active {
+  background: #f3f3f3;
+}
+
+.navCartCount {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -35px;
+  margin-left: -55px;
+  border-radius: 11px;
+  font-size: 14px;
+  background: #ff0000;
+  color: #fff;
+}
