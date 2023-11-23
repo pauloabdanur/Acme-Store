@@ -25,7 +25,6 @@ const ItemCard = ({ id, image, name, value }: Props) => {
     } else {
       alert('Apenas usuários logados podem adicionar produtos aos favoritos!');
     }
-    isFavorite(id) ? removeFromFavorites(id) : addToFavorites(id);
   };
 
   return (

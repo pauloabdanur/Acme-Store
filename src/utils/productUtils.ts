@@ -1,5 +1,4 @@
 import { Product, WordsData } from '../types';
-import example from '../assets/example.png';
 
 let availableVerbs: string[] = [];
 let availableAdjectives: string[] = [];
@@ -59,9 +58,84 @@ function generateRandomName(): string {
 }
 
 function generateRandomDescription() {
-  const description = 'essa é uma descrição genérica utilizada para teste';
+  const loremIpsum = [
+    'Lorem',
+    'ipsum',
+    'dolor',
+    'sit',
+    'amet',
+    'consectetur',
+    'adipiscing',
+    'elit',
+    'sed',
+    'do',
+    'eiusmod',
+    'tempor',
+    'incididunt',
+    'ut',
+    'labore',
+    'et',
+    'dolore',
+    'magna',
+    'aliqua',
+    'Ut',
+    'enim',
+    'ad',
+    'minim',
+    'veniam',
+    'quis',
+    'nostrud',
+    'exercitation',
+    'ullamco',
+    'laboris',
+    'nisi',
+    'ut',
+    'aliquip',
+    'ex',
+    'ea',
+    'commodo',
+    'consequat',
+    'Duis',
+    'aute',
+    'irure',
+    'dolor',
+    'in',
+    'reprehenderit',
+    'in',
+    'voluptate',
+    'velit',
+    'esse',
+    'cillum',
+    'dolore',
+    'eu',
+    'fugiat',
+    'nulla',
+    'pariatur',
+    'Excepteur',
+    'sint',
+    'occaecat',
+    'cupidatat',
+    'non',
+    'proident',
+    'sunt',
+    'in',
+    'culpa',
+    'qui',
+    'officia',
+  ];
+  const getRandomNumber = (min: number, max: number) =>
+    Math.floor(Math.random() * (max - min + 1)) + min;
+  const getRandomWord = () =>
+    loremIpsum[getRandomNumber(0, loremIpsum.length - 1)];
 
-  return description;
+  let description = '';
+  const descriptionLength = getRandomNumber(20, 500);
+
+  while (description.length < descriptionLength) {
+    description += ` ${getRandomWord()}`;
+  }
+
+  return description.trim();
 }
 
 function generateImage() {
@@ -77,7 +151,6 @@ function createProduct(id: number): Product {
   const productDescription = generateRandomDescription();
   const nameLength = productName.split(' ').length;
   const descrLength = productDescription.length;
-  console.log(descrLength);
 
   // Fórmula para calcular o valor
   const denominador = 4 - nameLength;

@@ -37,7 +37,7 @@ const ProductDetails = ({ product }: Props) => {
         </div>
         <div className={styles.productValues}>
           <div className={styles.oldValue}>
-            R${Number(product.value) + 50},00
+            R${Number(product.value) + 100},00
           </div>
           <div className={styles.newValue}>R${product.value},00</div>
         </div>
