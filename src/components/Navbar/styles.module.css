@@ -5,8 +5,9 @@
 }
 
 .navLogo img {
-  width: 200px;
-  height: 60px;
+  width: 220px;
+  height: 65px;
+  margin-left: 20px;
 }
 
 .navLoginCart {

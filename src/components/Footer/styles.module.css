@@ -1,0 +1,19 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo p {
+  color: #383838;
+  font-size: 46px;
+  font-weight: 700;
+}
