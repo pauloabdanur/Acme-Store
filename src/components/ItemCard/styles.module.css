@@ -16,3 +16,20 @@
   transform: scale(1.05);
   transition: 0.6s;
 }
+
+.itemBottom {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+}
+
+.item button {
+  border: none;
+  outline: none;
+  background: none;
+}
+
+.item button img {
+  height: 30px;
+  width: 30px;
+}

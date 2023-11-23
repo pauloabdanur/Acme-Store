@@ -29,6 +29,18 @@ export const ProductProvider = ({ children }: Props) => {
 
   const [products, setProducts] = useState<Product[]>(initialProducts);
   const [cartItems, setCartItems] = useState(getDefaultCart);
+  const [favoritesInLocalStorage, setFavoritesInLocalStorage] = useState<
+    number[]
+  >([]);
+  const [favorites, setFavorites] = useState<number[]>(favoritesInLocalStorage);
+
+  useEffect(() => {
+    const storedFavorites = localStorage.getItem('favorites');
+    const initialFavorites: number[] = storedFavorites
+      ? JSON.parse(storedFavorites)
+      : [];
+    setFavorites(initialFavorites);
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,13 +56,37 @@ export const ProductProvider = ({ children }: Props) => {
     fetchData();
   }, []);
 
+  const addToFavorites = (id: number) => {
+    setFavorites((prevFavorites) => [...prevFavorites, id]);
+    localStorage.setItem('favorites', JSON.stringify([...favorites, id]));
+  };
+
+  const removeFromFavorites = (id: number) => {
+    setFavorites((prevFavorites) =>
+      prevFavorites.filter((favId) => favId !== id)
+    );
+    setFavoritesInLocalStorage((prevFavorites) => {
+      const updatedFavorites = prevFavorites.filter((favId) => favId !== id);
+      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+      return updatedFavorites;
+    });
+  };
+
+  const isFavorite = (id: number): boolean => {
+    return favorites.includes(id);
+  };
+
   const addToCart = (id: number) => {
     setCartItems((prev) => ({ ...prev, [id]: prev[id] + 1 }));
     localStorage.setItem('cart', JSON.stringify(cartItems));
   };
 
   const removeFromCart = (id: number) => {
-    setCartItems((prev) => ({ ...prev, [id]: prev[id] - 1 }));
+    setCartItems((prev) => {
+      const updatedCart = { ...prev, [id]: prev[id] - 1 };
+      localStorage.setItem('cart', JSON.stringify(updatedCart));
+      return updatedCart;
+    });
   };
 
   const getTotalCartAmount = () => {
@@ -87,6 +123,9 @@ export const ProductProvider = ({ children }: Props) => {
         products,
         getProductById,
         cartItems,
+        addToFavorites,
+        removeFromFavorites,
+        isFavorite,
         addToCart,
         removeFromCart,
         getTotalCartAmount,

@@ -64,9 +64,16 @@ function generateRandomDescription() {
   return description;
 }
 
+function generateImage() {
+  const photoId = Math.floor(Math.random() * 500);
+  const imageUrl = `https://picsum.photos/id/${photoId}/200/300`;
+
+  return imageUrl;
+}
+
 function createProduct(id: number): Product {
   const productName = generateRandomName();
-
+  const imageUrl = generateImage();
   const productDescription = generateRandomDescription();
   const nameLength = productName.split(' ').length;
   const descrLength = productDescription.length;
@@ -83,7 +90,7 @@ function createProduct(id: number): Product {
     name: productName,
     description: productDescription,
     value: String(valor),
-    image: example,
+    image: imageUrl,
   };
 }
 
