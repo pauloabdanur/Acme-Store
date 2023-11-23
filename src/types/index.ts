@@ -3,6 +3,7 @@ export interface Product {
   name: string;
   description: string;
   value: string;
+  image: string;
 }
 
 export interface WordsData {

@@ -1,4 +1,5 @@
 import { Product, WordsData } from '../types';
+import example from '../assets/example.png';
 
 let availableVerbs: string[] = [];
 let availableAdjectives: string[] = [];
@@ -82,6 +83,7 @@ function createProduct(id: number): Product {
     name: productName,
     description: productDescription,
     value: String(valor),
+    image: example,
   };
 }
 

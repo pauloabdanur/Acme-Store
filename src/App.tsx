@@ -1,5 +1,5 @@
 import { AuthProvider } from './contexts/Auth/AuthProvider';
-import { ProductProvider } from './contexts/Products/ProductProvides';
+import { ProductProvider } from './contexts/Products/ProductProvider';
 import { Router } from './routes';
 
 function App() {

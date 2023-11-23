@@ -2,7 +2,6 @@ import { Product } from '../../types';
 import { useContext, useEffect, useState } from 'react';
 import styles from './styles.module.css';
 import ItemCard from '../../components/ItemCard';
-import example from '../../assets/example.png';
 import { ProductContext } from '../../contexts/Products/ProductContext';
 
 export default function Home() {
@@ -14,14 +13,22 @@ export default function Home() {
     const productsPerPage = 9;
     const startIndex = (currentPage - 1) * productsPerPage;
     const endIndex = startIndex + productsPerPage;
+    console.log(startIndex, endIndex);
     const newVisibleProducts = products.slice(startIndex, endIndex);
-    setVisibleProducts((prevVisibleProducts) => [
-      ...prevVisibleProducts,
-      ...newVisibleProducts,
-    ]);
-  }, [currentPage, products]);
+
+    if (visibleProducts.length > 0) {
+      setVisibleProducts((prevVisibleProducts) => [
+        ...prevVisibleProducts,
+        ...newVisibleProducts,
+      ]);
+    } else {
+      setVisibleProducts(newVisibleProducts);
+    }
+    //eslint-disable-next-line
+  }, [currentPage]);
 
   const handleShowMore = () => {
+    console.log('teste');
     setCurrentPage((prevPage) => prevPage + 1);
   };
 
@@ -33,9 +40,10 @@ export default function Home() {
         {visibleProducts?.map((product, index) => (
           <ItemCard
             key={index}
+            id={product.id}
             name={product.name}
             value={product.value}
-            image={example}
+            image={product.image}
           />
         ))}
       </div>
