@@ -3,17 +3,18 @@ import styles from './styles.module.css';
 import { ProductContext } from '../../contexts/Products/ProductContext';
 import ItemCard from '../ItemCard';
 import { Product } from '../../types';
+import { useParams } from 'react-router-dom';
 
 const OtherProducts = () => {
   const [otherProducts, setOtherProducts] = useState<Product[]>();
-
+  const productId = useParams();
   const { products } = useContext(ProductContext);
 
   useEffect(() => {
     const startIndex = Math.random() * (products.length - 4);
     const endIndex = startIndex + 3;
     setOtherProducts(products.slice(startIndex, endIndex));
-  }, []);
+  }, [productId]);
 
   return (
     <div className={styles.otherProducts}>

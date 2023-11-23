@@ -2,12 +2,16 @@ import { Product } from '../../types';
 import styles from './styles.module.css';
 import starIcon from '../../assets/star_icon.png';
 import emptyStar from '../../assets/star_dull_icon.png';
+import { useContext } from 'react';
+import { ProductContext } from '../../contexts/Products/ProductContext';
 
 interface Props {
   product: Product;
 }
 
 const ProductDetails = ({ product }: Props) => {
+  const { addToCart } = useContext(ProductContext);
+
   return (
     <div className={styles.productDetails}>
       <div className={styles.displayLeft}>
@@ -47,7 +51,13 @@ const ProductDetails = ({ product }: Props) => {
             <div>XG</div>
           </div>
         </div>
-        <button>Adicionar ao carrinho</button>
+        <button
+          onClick={() => {
+            addToCart(product.id);
+          }}
+        >
+          Adicionar ao carrinho
+        </button>
       </div>
     </div>
   );

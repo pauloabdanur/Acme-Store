@@ -12,7 +12,7 @@ const ItemCard = ({ id, image, name, value }: Props) => {
   return (
     <div className={styles.item}>
       <Link to={`/product/${id}`}>
-        <img src={image} />
+        <img onClick={() => window.scrollTo(0, 0)} src={image} />
       </Link>
       <p>{name}</p>
       <div className={styles.itemValue}>R${value},00</div>

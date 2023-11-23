@@ -13,7 +13,6 @@ export default function Home() {
     const productsPerPage = 9;
     const startIndex = (currentPage - 1) * productsPerPage;
     const endIndex = startIndex + productsPerPage;
-    console.log(startIndex, endIndex);
     const newVisibleProducts = products.slice(startIndex, endIndex);
 
     if (visibleProducts.length > 0) {
@@ -28,7 +27,6 @@ export default function Home() {
   }, [currentPage]);
 
   const handleShowMore = () => {
-    console.log('teste');
     setCurrentPage((prevPage) => prevPage + 1);
   };
 

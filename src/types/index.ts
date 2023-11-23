@@ -23,3 +23,5 @@ export interface User {
   phone?: string;
   password: string;
 }
+
+export type Cart = Record<number, number>;

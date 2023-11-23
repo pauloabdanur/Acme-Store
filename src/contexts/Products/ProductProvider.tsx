@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { fetchProducts } from '../../utils/productUtils';
 import { ProductContext } from './ProductContext';
-import { Product } from '../../types';
+import { Cart, Product } from '../../types';
 
 interface Props {
   children: JSX.Element;
@@ -13,7 +13,22 @@ export const ProductProvider = ({ children }: Props) => {
     ? JSON.parse(storedProducts)
     : [];
 
+  const getDefaultCart = () => {
+    const storedCart = localStorage.getItem('cart');
+    let cart: Cart = {};
+    if (storedCart) {
+      cart = JSON.parse(storedCart);
+    } else {
+      for (let i = 1; i < products.length + 1; i++) {
+        cart[i] = 0;
+      }
+    }
+
+    return cart;
+  };
+
   const [products, setProducts] = useState<Product[]>(initialProducts);
+  const [cartItems, setCartItems] = useState(getDefaultCart);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,14 +42,57 @@ export const ProductProvider = ({ children }: Props) => {
     };
 
     fetchData();
-  }, [products]);
+  }, []);
+
+  const addToCart = (id: number) => {
+    setCartItems((prev) => ({ ...prev, [id]: prev[id] + 1 }));
+    localStorage.setItem('cart', JSON.stringify(cartItems));
+  };
+
+  const removeFromCart = (id: number) => {
+    setCartItems((prev) => ({ ...prev, [id]: prev[id] - 1 }));
+  };
+
+  const getTotalCartAmount = () => {
+    let totalAmount = 0;
+    for (const item in cartItems) {
+      if (cartItems[item] > 0) {
+        const itemInfo = products.find(
+          (product) => product.id === Number(item)
+        );
+        totalAmount += Number(itemInfo?.value) * cartItems[item];
+      }
+    }
+
+    return totalAmount;
+  };
+
+  const getTotalCartItems = () => {
+    let totalItems = 0;
+    for (const item in cartItems) {
+      if (cartItems[item] > 0) {
+        totalItems += cartItems[item];
+      }
+    }
+    return totalItems;
+  };
 
   const getProductById = (productId: number): Product | undefined => {
     return products.find((product) => product.id === productId);
   };
 
   return (
-    <ProductContext.Provider value={{ products, getProductById }}>
+    <ProductContext.Provider
+      value={{
+        products,
+        getProductById,
+        cartItems,
+        addToCart,
+        removeFromCart,
+        getTotalCartAmount,
+        getTotalCartItems,
+      }}
+    >
       {children}
     </ProductContext.Provider>
   );
