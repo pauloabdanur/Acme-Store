@@ -1,23 +1,14 @@
 import { Product } from '../../types';
-import { fetchProducts } from '../../utils/productUtils';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import styles from './styles.module.css';
 import ItemCard from '../../components/ItemCard';
 import example from '../../assets/example.png';
+import { ProductContext } from '../../contexts/Products/ProductContext';
 
 export default function Home() {
-  const [products, setProducts] = useState<Product[]>([]);
+  const { products } = useContext(ProductContext);
   const [visibleProducts, setVisibleProducts] = useState<Product[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const newProducts = await fetchProducts();
-      setProducts(newProducts);
-    };
-
-    fetchData();
-  }, []);
 
   useEffect(() => {
     const productsPerPage = 9;
