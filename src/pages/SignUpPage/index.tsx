@@ -35,49 +35,51 @@ const SignUpPage = () => {
 
   return (
     <div className={styles.container}>
-      <label className={styles.label}>Cadastro</label>
       <div className={styles.content}>
-        <Input
-          type="text"
-          placeholder="Digite seu nome"
-          value={name}
-          onChange={(e) => {
-            setName(e.target.value);
-            setError('');
-          }}
-          required={true}
-        />
-        <Input
-          type="email"
-          placeholder="Digite seu e-mail"
-          value={email}
-          onChange={(e) => {
-            setEmail(e.target.value);
-            setError('');
-          }}
-          required={true}
-        />
-        <Input
-          type="text"
-          placeholder="Digite seu telefone"
-          value={phone}
-          onChange={(e) => {
-            setPhone(e.target.value);
-            setError('');
-          }}
-          required={true}
-        />
-        <Input
-          type="password"
-          placeholder="Digite sua senha"
-          value={password}
-          onChange={(e) => {
-            setPassword(e.target.value);
-            setError('');
-          }}
-          required={true}
-        />
-        <label className={styles.labelError}>{error}</label>
+        <h1>Cadastro</h1>
+        <div className={styles.inputFields}>
+          <Input
+            type="text"
+            placeholder="Digite seu nome"
+            value={name}
+            onChange={(e) => {
+              setName(e.target.value);
+              setError('');
+            }}
+            required={true}
+          />
+          <Input
+            type="email"
+            placeholder="Digite seu e-mail"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              setError('');
+            }}
+            required={true}
+          />
+          <Input
+            type="text"
+            placeholder="Digite seu telefone"
+            value={phone}
+            onChange={(e) => {
+              setPhone(e.target.value);
+              setError('');
+            }}
+            required={true}
+          />
+          <Input
+            type="password"
+            placeholder="Digite sua senha"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              setError('');
+            }}
+            required={true}
+          />
+          <label className={styles.labelError}>{error}</label>
+        </div>
         <Button text="Confirmar Cadastro" onClick={handleSubmit} />
         <label className={styles.labelSignUp}>
           Já tem uma conta?{' '}

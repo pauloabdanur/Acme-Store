@@ -32,29 +32,29 @@ const LoginPage = () => {
 
   return (
     <div className={styles.container}>
-      <label className={styles.label}>Login</label>
       <div className={styles.content}>
-        <Input
-          type="email"
-          placeholder="Digite seu e-mail"
-          value={email}
-          onChange={(e) => {
-            setEmail(e.target.value);
-            setError('');
-          }}
-          required={true}
-        />
-        <Input
-          type="password"
-          placeholder="Digite sua senha"
-          value={password}
-          onChange={(e) => {
-            setPassword(e.target.value);
-            setError('');
-          }}
-          required={true}
-        />
-        <label className={styles.labelError}>{error}</label>
+        <h1>Login</h1>
+        <div className={styles.inputFields}>
+          <Input
+            type="email"
+            placeholder="Digite seu e-mail"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              setError('');
+            }}
+          />
+          <Input
+            type="password"
+            placeholder="Digite sua senha"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              setError('');
+            }}
+          />
+          <label className={styles.labelError}>{error}</label>
+        </div>
         <Button text="Login" onClick={handleSubmit} />
         <label className={styles.labelSignUp}>
           Não tem uma conta?{' '}

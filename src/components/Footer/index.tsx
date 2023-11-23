@@ -7,6 +7,7 @@ import whatsappIcon from '../../assets/whatsapp_icon.png';
 const Footer = () => {
   return (
     <div className={styles.footer}>
+      <hr />
       <div className={styles.logo}>
         <img src={acmeLogo} alt="" />
       </div>

@@ -63,7 +63,6 @@ function generateRandomDescription() {
   return description;
 }
 
-// Função para criar um produto com os atributos especificados
 function createProduct(id: number): Product {
   const productName = generateRandomName();
 
@@ -82,7 +81,7 @@ function createProduct(id: number): Product {
     id,
     name: productName,
     description: productDescription,
-    value: String(valor), // Arredondar para duas casas decimais
+    value: String(valor),
   };
 }
 

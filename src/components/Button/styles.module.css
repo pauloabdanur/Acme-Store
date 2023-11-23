@@ -1,13 +1,12 @@
 .button {
-  padding: 16px 20px;
-  outline: none;
+  width: 580px;
+  height: 72px;
+  color: #fff;
+  background-color: #ff4141;
+  margin-top: 30px;
   border: none;
-  border-radius: 5px;
-  width: 100%;
+  font-size: 24px;
+  font-weight: 500;
   cursor: pointer;
-  background-color: #046ee5;
-  color: white;
-  font-weight: 600;
-  font-size: 16px;
-  max-width: 350px;
+  margin-bottom: 15px;
 }
